@@ -10,7 +10,7 @@ promoRouter.route('/').all((req,res,next) => {
 }).get((req, res, next) => {
   res.send('We will send all the promos to you.');
 }).post((req, res, next) => {
- res.end('Will add the promo: ' + req.body.name + ' with details: ' + req.body.description);
+  res.end('Will add the promo: ' + req.params.id + ' with detail');
 }).put((req, res, next) => {
   res.statusCode = 403;
   res.end('PUT operation not supported on /promotions');
