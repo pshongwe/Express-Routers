@@ -30,17 +30,19 @@ dishRouter.route('/:dishId').all((req,res,next) => {
   next();
 }).get((req, res, next) => {
   console.log(":dishId dishRouter.get");
-  res.send('We will send all the dishes to you.');
+  res.send('We will send the dish ' +req.params.dishId +' to you.');
 }).post((req, res, next) => {
   console.log(":dishId dishRouter.post");
- res.end('Will add the dish: ' + req.body.name + ' with details: ' + req.body.description);
+  res.statusCode = 403;
+  res.end('POST operation not supported on /dishes/'+ req.params.dishId);
 }).put((req, res, next) => {
   console.log(":dishId dishRouter.put");
-  res.statusCode = 403;
-  res.end('PUT operation not supported on /dishes');
+  es.write('Updating the dish: ' + req.params.dishId + '\n');
+  res.end('Will update the dish: ' + req.body.name + 
+        ' with details: ' + req.body.description);
 }).delete((req, res, next) => {
   console.log(":dishId dishRouter.delete");
-    res.end('Deleting all dishes');
+  res.end('Deleting dish: ' + req.params.dishId);
 });
 
 console.log("dishes b4 export dishRouter");
